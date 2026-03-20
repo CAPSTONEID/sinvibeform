@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CAPSTONE 바이브코딩 레퍼런스</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="form-wrapper">
+
+    <!-- ═══════════════════════════════════════════════
+         터미널 창 전체 컨테이너
+    ═══════════════════════════════════════════════ -->
+    <div class="terminal-window">
+
+      <!-- 타이틀 바 -->
+      <div class="titlebar">
+        <div class="dot-wrap">
+          <span class="dot r"></span>
+          <span class="dot y"></span>
+          <span class="dot g"></span>
+        </div>
+        <span class="titlebar-text">CAPSTONE_VIBE_CODING — zsh — 80×24</span>
+      </div>
+
+      <!-- ── CAPSTONE 배너 ── -->
+      <div class="terminal-banner">
+        <div class="banner-prompt">
+          <span class="prompt-user">root@capstone</span><span style="color:#3a5a3a">:</span><span style="color:#5a7a9a">~</span><span style="color:#3a5a3a">$</span>&nbsp;<span class="prompt-cmd">./init --mode reference --year 2026</span><span class="cursor"></span>
+        </div>
+
+        <div class="banner-title">CAPSTONE 바이브코딩 레퍼런스</div>
+
+        <div class="banner-notice">
+          <span class="notice-tag">[NOTICE]</span>
+          본 양식은 수집 목적이 아닌 예시를 위한 사이트입니다.<br />
+          완료가 되면 연동된 구글 스프레드 시트 문서로 이동하여, 기록하신 모든 정보를 확인할 수
+          있사오니 이점 주의하여 주세요.
+        </div>
+      </div>
+
+      <!-- ── 폼 본체 ── -->
+      <div class="form-card">
+
+        <!-- 진행률 -->
+        <div class="progress-bar-wrap">
+          <div class="progress-labels">
+            <span class="prog-label">PROGRESS</span>
+            <span id="prog-pct" style="color:var(--green-dim);">0%</span>
+          </div>
+          <div class="progress-track" id="prog-track">
+            [<span id="prog-bar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>]
+          </div>
+        </div>
+
+        <form id="contact-form" novalidate>
+
+          <!-- 01. 이름 -->
+          <div class="form-group">
+            <label class="form-label" for="name">
+              <span class="step-num">01</span>
+              NAME&nbsp;<span class="required">*</span>
+              <span class="step-prompt">// 이름</span>
+            </label>
+            <input
+              type="text"
+              id="name"
+              class="form-input"
+              placeholder="홍길동"
+              autocomplete="name"
+              required
+            />
+            <p class="field-hint">// 실제 이름을 입력하지 마세요. 테스트용 임의 이름을 사용해 주세요.</p>
+          </div>
+
+          <!-- 02. 이메일 -->
+          <div class="form-group">
+            <label class="form-label" for="email">
+              <span class="step-num">02</span>
+              EMAIL&nbsp;<span class="required">*</span>
+              <span class="step-prompt">// 이메일 주소</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              class="form-input"
+              placeholder="example@email.com"
+              autocomplete="email"
+              required
+            />
+            <p class="error-msg" id="email-error">
+              올바른 이메일 형식이 아닙니다. (예: example@email.com)
+            </p>
+            <p class="field-hint">// 실제 이메일 주소를 입력하지 않아도 됩니다. <span class="hint-em">aaa@aa.aa</span> 형식으로 입력하셔도 됩니다. (아이디@도메인주소)</p>
+          </div>
+
+          <!-- 03. 궁금한 분야 -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="step-num">03</span>
+              INTEREST&nbsp;<span class="required">*</span>
+              <span class="step-prompt">// 복수 선택 가능</span>
+            </label>
+            <div class="checkbox-grid">
+              <div class="checkbox-item">
+                <input type="checkbox" id="field-ai" name="fields" value="AI" />
+                <label for="field-ai">
+                  <span class="check-icon">[ ]</span>AI
+                </label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="field-marketing" name="fields" value="마케팅" />
+                <label for="field-marketing">
+                  <span class="check-icon">[ ]</span>마케팅
+                </label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="field-planning" name="fields" value="기획" />
+                <label for="field-planning">
+                  <span class="check-icon">[ ]</span>기획
+                </label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="field-collab" name="fields" value="협업툴 도입" />
+                <label for="field-collab">
+                  <span class="check-icon">[ ]</span>협업툴 도입
+                </label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="field-content" name="fields" value="콘텐츠 기획 및 제작" />
+                <label for="field-content">
+                  <span class="check-icon">[ ]</span>콘텐츠 기획 및 제작
+                </label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="field-etc" name="fields" value="기타" />
+                <label for="field-etc">
+                  <span class="check-icon">[ ]</span>기타
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- 04. 유입 채널 -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="step-num">04</span>
+              SOURCE&nbsp;<span class="required">*</span>
+              <span class="step-prompt">// 유입 채널 선택</span>
+            </label>
+            <div class="channel-grid">
+
+              <!-- 유튜브 -->
+              <div class="channel-item">
+                <input type="radio" id="ch-youtube" name="channel" value="유튜브" />
+                <label for="ch-youtube">
+                  <div class="channel-icon youtube">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                  </div>
+                  <span class="channel-name">유튜브</span>
+                </label>
+                <div class="channel-selected-mark"></div>
+              </div>
+
+              <!-- 인스타그램 -->
+              <div class="channel-item">
+                <input type="radio" id="ch-instagram" name="channel" value="인스타그램" />
+                <label for="ch-instagram">
+                  <div class="channel-icon instagram">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+                    </svg>
+                  </div>
+                  <span class="channel-name">인스타그램</span>
+                </label>
+                <div class="channel-selected-mark"></div>
+              </div>
+
+              <!-- 노션 -->
+              <div class="channel-item">
+                <input type="radio" id="ch-notion" name="channel" value="노션템플릿" />
+                <label for="ch-notion">
+                  <div class="channel-icon notion">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+                      <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.14c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/>
+                    </svg>
+                  </div>
+                  <span class="channel-name">노션 템플릿</span>
+                </label>
+                <div class="channel-selected-mark"></div>
+              </div>
+
+              <!-- 블로그 -->
+              <div class="channel-item">
+                <input type="radio" id="ch-blog" name="channel" value="블로그" />
+                <label for="ch-blog">
+                  <div class="channel-icon blog">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+                      <path d="M6.5 10h-2v1h2v-1zm0 2h-2v1h2v-1zm-2 3h2v-1h-2v1zm7.5-5h-2v1h2v-1zm0 2h-2v1h2v-1zm-2 3h2v-1h-2v1zM20 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zm0 16H4V5h16v14z"/>
+                    </svg>
+                  </div>
+                  <span class="channel-name">블로그</span>
+                </label>
+                <div class="channel-selected-mark"></div>
+              </div>
+
+              <!-- 기타 -->
+              <div class="channel-item">
+                <input type="radio" id="ch-etc" name="channel" value="기타" />
+                <label for="ch-etc">
+                  <div class="channel-icon etc">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="#5a7a5a">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
+                    </svg>
+                  </div>
+                  <span class="channel-name">기타</span>
+                </label>
+                <div class="channel-selected-mark"></div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- 05. 동의 -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="step-num">05</span>
+              CONFIRM&nbsp;<span class="required">*</span>
+              <span class="step-prompt">// 내용 확인</span>
+            </label>
+            <div class="agree-wrap" id="agree-wrap">
+              <input type="checkbox" id="agree" name="agree" />
+              <div class="agree-custom-check"></div>
+              <div class="agree-text">
+                <strong>모든 내용을 확인하셨나요?</strong>
+                입력하신 정보는 문의 답변 목적으로만 사용되며, 안전하게 보호됩니다.
+              </div>
+            </div>
+          </div>
+
+          <!-- 제출 -->
+          <button type="submit" class="submit-btn" id="submit-btn">
+            <span class="btn-text">&gt;_ 내용 전달하기 [ SEND ]</span>
+            <span class="btn-loading">
+              <span class="spinner"></span>
+              &nbsp;TRANSMITTING...
+            </span>
+          </button>
+
+        </form>
+      </div><!-- /form-card -->
+
+      <!-- 터미널 푸터 -->
+      <div class="terminal-footer">
+        <span class="footer-status">● CONNECTED</span>
+        <span>CAPSTONE VIBE CODING REF v1.0 — 2026</span>
+        <span>UTF-8</span>
+      </div>
+
+    </div><!-- /terminal-window -->
+  </div><!-- /form-wrapper -->
+
+  <!-- ═══ 성공 팝업 ═══ -->
+  <div class="popup-overlay" id="success-popup">
+    <div class="popup-box">
+      <div class="popup-icon">✅</div>
+      <div class="popup-badge">SYSTEM MESSAGE</div>
+      <h2 class="popup-title">정상적으로 문의 되셨습니다.</h2>
+      <p class="popup-desc">
+        데이터가 성공적으로 전송되었습니다.<br />
+        빠른 시일 내에 답변 드리겠습니다.
+      </p>
+      <button class="popup-close-btn" id="popup-close-btn">[ 확인 ]</button>
+      <a
+        class="popup-sheet-btn"
+        href="https://docs.google.com/spreadsheets/d/1aTP7_QfJ1anHzeAxwjzkmoI13QSwoe0NyqeB8rNLN3M/edit?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer"
+      >[ 입력 폼 결과 확인하기 → ]</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // 체크박스 선택 시 [ ] → [X] 텍스트 업데이트
+    document.querySelectorAll('input[name="fields"]').forEach(cb => {
+      cb.addEventListener('change', () => {
+        const icon = cb.nextElementSibling.querySelector('.check-icon');
+        if (icon) icon.textContent = cb.checked ? '✓' : '[ ]';
+      });
+    });
+  </script>
+</body>
+</html>
