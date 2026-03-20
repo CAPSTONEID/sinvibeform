@@ -1,67 +1,40 @@
-# 문의 폼 - Google Sheets 연동 설정 가이드
+# CAPSTONE 바이브코딩 레퍼런스
+
+> 터미널 스타일 문의 폼 — Google Sheets 실시간 연동
+
+**라이브 URL** → [https://capstoneid.github.io/sinvibeform/](https://capstoneid.github.io/sinvibeform/)
+**응답 시트** → [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1aTP7_QfJ1anHzeAxwjzkmoI13QSwoe0NyqeB8rNLN3M/edit?usp=sharing)
+
+---
 
 ## 파일 구성
 
 ```
-폼 바이브코딩/
-├── index.html              ← 메인 폼 페이지
-├── style.css               ← 스타일
-├── script.js               ← 폼 로직 & Sheets 연동
-├── google-apps-script.gs   ← Google Apps Script 코드
-└── README.md               ← 이 파일
+sinvibeform/
+├── index.html   ← 메인 폼 페이지 (터미널 UI)
+├── style.css    ← 터미널 스타일 디자인
+├── script.js    ← 폼 유효성 검사 & Google Sheets 전송
+└── README.md
 ```
 
 ---
 
-## 구글 스프레드시트 연동 방법 (3단계)
+## 폼 항목
 
-### Step 1. 스프레드시트 만들기
-
-1. [Google Sheets](https://sheets.google.com) 접속
-2. 새 스프레드시트 생성
-3. 스프레드시트 이름을 원하는 대로 설정
-
----
-
-### Step 2. Apps Script 웹앱 배포
-
-1. 스프레드시트 상단 메뉴 → **확장 프로그램** → **Apps Script** 클릭
-2. 기존 코드를 모두 지우고, `google-apps-script.gs` 파일의 내용을 붙여넣기
-3. 상단 메뉴 → **배포** → **새 배포** 클릭
-4. 설정:
-   - 유형: **웹 앱**
-   - 설명: 문의폼 연동 (자유 입력)
-   - 다음 사용자로 실행: **나 (내 Google 계정)**
-   - 액세스 권한: **모든 사용자**
-5. **배포** 클릭 → Google 계정 권한 허용
-6. **웹 앱 URL** 복사 (예: `https://script.google.com/macros/s/AKfy.../exec`)
+| # | 항목 | 타입 |
+|---|------|------|
+| 01 | 이름 | 텍스트 입력 |
+| 02 | 이메일 주소 | 텍스트 입력 (정규표현식 검증) |
+| 03 | 궁금한 분야 | 멀티 선택 (AI / 마케팅 / 기획 / 협업툴 도입 / 콘텐츠 기획 및 제작 / 기타) |
+| 04 | 유입 채널 | 단일 선택 — 이미지 카드 (유튜브 / 인스타그램 / 노션 템플릿 / 블로그 / 기타) |
+| 05 | 내용 확인 | 동의 체크 |
 
 ---
 
-### Step 3. script.js에 URL 입력
+## Google Sheets 연동
 
-`script.js` 파일을 열어 상단의 URL을 교체하세요:
-
-```js
-// 변경 전
-const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/여기에_웹앱_URL_입력/exec";
-
-// 변경 후 (복사한 URL로 교체)
-const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfy.../exec";
-```
-
----
-
-## 완료 후 동작 확인
-
-1. `index.html`을 브라우저에서 열기
-2. 폼 작성 후 **내용 전달하기** 클릭
-3. "정상적으로 문의 되셨습니다." 팝업 확인
-4. Google Sheets에서 **"문의폼 응답"** 시트에 데이터 저장 확인
-
----
-
-## 스프레드시트 컬럼 구조
+- **Apps Script URL** — `script.js` 상단에 적용 완료
+- **응답 시트** — 제출 시 자동으로 `문의폼 응답` 시트에 기록
 
 | 제출일시 | 이름 | 이메일주소 | 궁금한 분야 | 유입 채널 |
 |----------|------|------------|-------------|-----------|
@@ -71,6 +44,6 @@ const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfy.../exec"
 
 ## 주의사항
 
-- Apps Script 코드를 수정하면 **재배포** 필요 (새 배포 또는 기존 배포 업데이트)
-- 로컬 파일(`file://`)에서 열면 CORS 오류가 날 수 있음 → 웹서버 또는 GitHub Pages 등에 배포 권장
-- 무료 Google 계정 기준 Apps Script 실행 제한: 일 6분 (대용량 아니면 충분)
+- 본 양식은 **수집 목적이 아닌 예시용** 사이트입니다.
+- 이름과 이메일은 실제 정보를 입력하지 않아도 됩니다. (예: `aaa@aa.aa`)
+- 제출 완료 후 팝업에서 구글 스프레드시트로 바로 이동할 수 있습니다.
